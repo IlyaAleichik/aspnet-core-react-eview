@@ -8,3 +8,5 @@ Web application for viewing videos and images with recommendations
 - ASP .NET
 - MS SQL
 - Google API
+
+## Hosting
