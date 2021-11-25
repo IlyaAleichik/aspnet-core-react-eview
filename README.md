@@ -9,5 +9,5 @@ Web application for viewing videos and images with recommendations
 - MS SQL
 - Google API
 
-## Hosting URL
-- http://eview.somee.com/
+## URL of the web application
+http://eview.somee.com/
