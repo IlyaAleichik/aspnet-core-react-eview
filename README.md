@@ -6,7 +6,7 @@ Web application for viewing videos and images with recommendations
 - React
 - Bootstrap
 - ASP .NET
-- MS SQL
+- PostgreSQL
 - Google API
 
 ## URL of the web application
