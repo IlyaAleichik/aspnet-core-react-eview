@@ -1,5 +1,5 @@
 # aspnet-core-react-eview
-Web application for viewing videos and images with recommendations
+Web application for viewing reviews with recommendations
 
 ## Technologies
 - Entity Framework Core
