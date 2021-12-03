@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using ASP.NETCoreWebApplication.Api.Core;
 using ASP.NETCoreWebApplication.Applications;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
@@ -30,9 +31,17 @@ namespace ASP.NETCoreWebApplication
             services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/build"; });
             services.AddDbContext<DataContext>(opt =>
             {
-                opt.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
+                opt.UseNpgsql(configuration.GetConnectionString("DefaultConnection"));
+            });
+            services.AddCors(opt =>
+            {
+                opt.AddPolicy("CorsPolicy", policy =>
+                {
+                    policy.AllowAnyMethod().AllowAnyHeader().WithOrigins("https://localhost:5001/");
+                });
             });
             services.AddMediatR(typeof(List.Handler).Assembly);
+            services.AddAutoMapper(typeof(MappingProfiles).Assembly);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,6 +64,8 @@ namespace ASP.NETCoreWebApplication
 
             app.UseRouting();
 
+            app.UseCors("CorsPolicy");
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

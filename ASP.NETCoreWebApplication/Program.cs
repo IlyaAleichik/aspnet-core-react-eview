@@ -2,6 +2,8 @@ using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -17,9 +19,10 @@ namespace ASP.NETCoreWebApplication
             var services = scope.ServiceProvider;
             try {
                 var context = services.GetRequiredService<DataContext>();
-                await context.Database.EnsureDeletedAsync();
-                await context.Database.MigrateAsync();
-                await Seed.SeedData(context);
+                if (!((context.Database.GetService<IDatabaseCreator>() as RelationalDatabaseCreator).Exists()))
+                {
+                    await context.Database.EnsureDeletedAsync(); await context.Database.MigrateAsync(); await Seed.SeedData(context);
+                }
             }
             catch (Exception e)
             {

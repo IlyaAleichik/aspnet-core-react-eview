@@ -21,10 +21,10 @@ namespace ASP.NETCoreWebApplication
                     Date = DateTime.Now.AddMonths(-2),
                     Description = "Activity 2 months ago",
                     Category = "drinks",
-                    City = "London",
-                    Venue = "Pub",
-                    View = 5,
-                    Likes = 5,
+                    Image = "London",
+                    Author = "Pub",
+                    Views = 5,
+                    Recomendations = 5,
                 },
                 new Review
                 {
@@ -32,10 +32,10 @@ namespace ASP.NETCoreWebApplication
                     Date = DateTime.Now.AddMonths(-1),
                     Description = "Activity 1 month ago",
                     Category = "culture",
-                    City = "Paris",
-                    Venue = "Louvre",
-                    View = 5,
-                    Likes = 5,
+                    Image = "Paris",
+                    Author = "Louvre",
+                    Views = 5,
+                    Recomendations = 5,
                 },
                 new Review
                 {
@@ -43,10 +43,10 @@ namespace ASP.NETCoreWebApplication
                     Date = DateTime.Now.AddMonths(1),
                     Description = "Activity 1 month in future",
                     Category = "culture",
-                    City = "London",
-                    Venue = "Natural History Museum",
-                    View = 5,
-                    Likes = 5,
+                    Image = "London",
+                    Author = "Natural History Museum",
+                    Views = 5,
+                    Recomendations = 5,
                 },
                 new Review
                 {
@@ -54,10 +54,10 @@ namespace ASP.NETCoreWebApplication
                     Date = DateTime.Now.AddMonths(2),
                     Description = "Activity 2 months in future",
                     Category = "music",
-                    City = "London",
-                    Venue = "O2 Arena",
-                    View = 5,
-                    Likes = 5,
+                    Image = "London",
+                    Author = "O2 Arena",
+                    Views = 5,
+                    Recomendations = 5,
                 },
                 new Review
                 {
@@ -65,10 +65,10 @@ namespace ASP.NETCoreWebApplication
                     Date = DateTime.Now.AddMonths(3),
                     Description = "Activity 3 months in future",
                     Category = "drinks",
-                    City = "London",
-                    Venue = "Another pub",
-                    View = 5,
-                    Likes = 5,
+                   Image = "London",
+                   Author = "Another pub",
+                    Views = 5,
+                    Recomendations = 5,
                 },
                 new Review
                 {
@@ -76,10 +76,10 @@ namespace ASP.NETCoreWebApplication
                     Date = DateTime.Now.AddMonths(4),
                     Description = "Activity 4 months in future",
                     Category = "drinks",
-                    City = "London",
-                    Venue = "Yet another pub",
-                    View = 5,
-                    Likes = 5,
+                    Image = "London",
+                    Author = "Yet another pub",
+                    Views = 5,
+                    Recomendations = 5,
                 },
                 new Review
                 {
@@ -87,10 +87,10 @@ namespace ASP.NETCoreWebApplication
                     Date = DateTime.Now.AddMonths(5),
                     Description = "Activity 5 months in future",
                     Category = "drinks",
-                    City = "London",
-                    Venue = "Just another pub",
-                    View = 5,
-                    Likes = 5,
+                   Image = "London",
+                   Author = "Just another pub",
+                    Views = 5,
+                    Recomendations = 5,
                 },
                 new Review
                 {
@@ -98,10 +98,10 @@ namespace ASP.NETCoreWebApplication
                     Date = DateTime.Now.AddMonths(6),
                     Description = "Activity 6 months in future",
                     Category = "music",
-                    City = "London",
-                    Venue = "Roundhouse Camden",
-                    View = 5,
-                    Likes = 5,
+                    Image = "London",
+                    Author = "Roundhouse Camden",
+                    Views = 5,
+                    Recomendations = 5,
                 },
                 new Review
                 {
@@ -109,10 +109,10 @@ namespace ASP.NETCoreWebApplication
                     Date = DateTime.Now.AddMonths(7),
                     Description = "Activity 2 months ago",
                     Category = "travel",
-                    City = "London",
-                    Venue = "Somewhere on the Thames",
-                    View = 5,
-                    Likes = 5,
+                    Image = "London",
+                    Author = "Somewhere on the Thames",
+                    Views = 5,
+                    Recomendations = 5,
                 },
                 new Review
                 {
@@ -120,10 +120,10 @@ namespace ASP.NETCoreWebApplication
                     Date = DateTime.Now.AddMonths(8),
                     Description = "Activity 8 months in future",
                     Category = "film",
-                    City = "London",
-                    Venue = "Cinema",
-                    View = 10,
-                    Likes = 5,
+                    Image = "London",
+                    Author = "Cinema",
+                    Views = 10,
+                    Recomendations = 5,
                 }
             };
 
