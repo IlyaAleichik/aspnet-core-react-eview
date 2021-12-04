@@ -1,13 +1,12 @@
-import "bootstrap/dist/css/bootstrap.css";
+// import "bootstrap/dist/css/bootstrap.css";
+import  'semantic-ui-css/semantic.min.css'
 import React from "react";
 import ReactDOM from "react-dom";
-import  'semantic-ui-css/semantic.min.css'
+import App from "./app/layout/App";
 import registerServiceWorker from "./registerServiceWorker";
-import App from "./App";
+import "../src/app/layout/styles.css"
 
 // const baseUrl = document.getElementsByTagName("base")[0].getAttribute("href");
-const rootElement = document.getElementById("root");
 
-ReactDOM.render(<App/>, rootElement);
-
+ReactDOM.render(<App/>, document.getElementById("root")); 
 registerServiceWorker();
