@@ -29,10 +29,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Api\Extensions" />
-      <Folder Include="Api\Services" />
       <Folder Include="ClientApp\public\assets" />
-      <Folder Include="Infrastructure" />
       <Folder Include="Migrations" />
     </ItemGroup>
 

@@ -1,8 +1,13 @@
 import React, {Component, useState} from 'react';
 import {Button,Label, Item, ItemContent, Segment} from "semantic-ui-react";
 import ReviewDashboard from "./ReviewDashboard";
+import {Link} from "react-router-dom";
+import axios from "axios";
 export default class ReviewList extends Component {
-    
+    constructor(props) {
+        super(props);
+    }
+
     handleClick(review, index){
         console.log(review);
         console.log(index);
@@ -13,7 +18,7 @@ export default class ReviewList extends Component {
         console.log(reviews)
         return (
             <Segment>
-                <Item.Group divided>
+                <Item.Group divided >
                     {reviews.map((review, index) =>
                         (<Item key={review.id}>
                             <ItemContent>
@@ -24,7 +29,7 @@ export default class ReviewList extends Component {
                                     <p>{review.views}</p>
                                 </Item.Description>
                                 <Item.Extra>
-                                    <Button onClick={() => this.handleClick(review, index)} floated={"right"} content={"View"} color={"Blue"}/>
+                                    <Button onClick={() => this.handleClick(review, index)} floated={"right"} content={"View"}/>
                                     <Label basic content={review.category}/>
                                 </Item.Extra>
                             </ItemContent>

@@ -6,12 +6,12 @@ export default function () {
         return (
           <Menu inverted fixed={"top"}>
                <Container>
-                       <Menu.Item header>
+                       <Menu.Item header href={"/"}>
                                <img src="/assets/logo.png" alt="Logo" />
                        </Menu.Item>
-                       <Menu.Item name={"Reviews"} />
+                       <Menu.Item name={"Reviews"} href={"/reviews"} />
                        <Menu.Item>
-                               <Button positive content={"Create Review"}/>
+                               <Button positive content={"Create Review"} href={"/reviews/add"}/>
                        </Menu.Item>
                </Container>   
           </Menu>

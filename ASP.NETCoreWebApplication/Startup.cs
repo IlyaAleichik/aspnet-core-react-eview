@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using ASP.NETCoreWebApplication.Api.Core;
 using ASP.NETCoreWebApplication.Applications;
@@ -29,15 +30,51 @@ namespace ASP.NETCoreWebApplication
 
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/build"; });
-            services.AddDbContext<DataContext>(opt =>
+            // services.AddDbContext<DataContext>(opt =>
+            // {
+            //     opt.UseNpgsql(configuration.GetConnectionString("DefaultConnection"));
+            // });
+            services.AddDbContext<DataContext>(options =>
             {
-                opt.UseNpgsql(configuration.GetConnectionString("DefaultConnection"));
+                var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+              
+                string connStr;
+
+                // Depending on if in development or production, use either Heroku-provided
+                // connection string, or development connection string from env var.
+                if (env == "Development")
+                {
+                    // Use connection string from file.
+                    connStr = configuration.GetConnectionString("DefaultConnection");
+                }
+                else
+                {
+                    // Use connection string provided at runtime by Heroku.
+                    //var connUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
+                    string connUrl = "postgres://vufvknxrhhwuhl:eb52b0e09fd9f6ee140a10a772f7b53adb9bfb74f7e2bd9efd3dd00a8036c5ac@ec2-3-248-103-75.eu-west-1.compute.amazonaws.com:5432/dsviptoovnpkq";
+                    // Parse connection URL to connection string for Npgsql
+                    connUrl = connUrl.Replace("postgres://", string.Empty);
+                    var pgUserPass = connUrl.Split("@")[0];
+                    var pgHostPortDb = connUrl.Split("@")[1];
+                    var pgHostPort = pgHostPortDb.Split("/")[0];
+                    var pgDb = pgHostPortDb.Split("/")[1];
+                    var pgUser = pgUserPass.Split(":")[0];
+                    var pgPass = pgUserPass.Split(":")[1];
+                    var pgHost = pgHostPort.Split(":")[0];
+                    var pgPort = pgHostPort.Split(":")[1];
+
+                    connStr = $"Server={pgHost};Port={pgPort};User Id={pgUser};Password={pgPass};Database={pgDb}; SSL Mode=Require; Trust Server Certificate=true";
+                }
+
+                // Whether the connection string came from the local development configuration file
+                // or from the environment variable from Heroku, use it to set up your DbContext.
+                options.UseNpgsql(connStr);
             });
             services.AddCors(opt =>
             {
                 opt.AddPolicy("CorsPolicy", policy =>
                 {
-                    policy.AllowAnyMethod().AllowAnyHeader().WithOrigins("https://localhost:5001/");
+                    policy.AllowAnyMethod().AllowAnyHeader().AllowCredentials().WithOrigins("https://localhost:5000/");
                 });
             });
             services.AddMediatR(typeof(List.Handler).Assembly);

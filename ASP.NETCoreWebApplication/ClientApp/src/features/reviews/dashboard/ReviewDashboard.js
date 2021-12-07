@@ -4,9 +4,14 @@ import ReviewList from "./ReviewList";
 import ReviewDetails from "../details/ReviewDetails";
 import ReviewForm from "../form/ReviewForm";
 export default class ReviewDashboard extends Component {
-    state = {
-        reviews: []
-    }
+
+
+  constructor(props) {
+      super(props);
+      this.state = {
+          reviews: [],
+      }
+  }
     
     async fetchReviewsData() {
         const response = await fetch('api/reviews');
@@ -14,20 +19,22 @@ export default class ReviewDashboard extends Component {
         this.setState({ reviews: data });
         console.log(this.state.reviews)
     }
+    
     componentDidMount() {
         this.fetchReviewsData()
     }
     
     render() {
         const reviews = this.state.reviews;
+        const selectReview = this.state.selectReview;
         return (
             <Grid>
-                <GridColumn width={"10"}>
+                <GridColumn>
                     <ReviewList children={reviews}/>
                 </GridColumn>
                 {/*<GridColumn width={"5"}>*/}
-                {/*    <ReviewDetails/>*/}
-                {/*    <ReviewForm/>*/}
+                {/*    <ReviewDetails />*/}
+                {/*    /!*<ReviewForm/>*!/*/}
                 {/*</GridColumn>*/}
             </Grid>
         );
